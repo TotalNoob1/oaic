@@ -1,0 +1,359 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Setup your own 5G Network &mdash; OAIC 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multiples UEs ZMQ" href="MultipleUEs.html" />
+    <link rel="prev" title="srsRAN with E2 Agent Installation Guide" href="srsRAN_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OAIC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oaic_features.html">OAIC Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Background Information:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="background_cloud.html">Background on Docker, Kubernetes &amp; Helm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background_oran_architecture.html">O-RAN Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background_srsRAN.html">RAN Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation Procedures:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Hardware and Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oran_installation.html">O-RAN Near-Real Time RIC Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srsRAN_installation.html">srsRAN with E2 Agent Installation Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Setup your own 5G Network</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-the-epc">Running the EPC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#en-gnb-and-ue-in-zeromq-mode">en-gNB and UE in ZeroMQ Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-en-gnb-connecting-to-near-rt-ric">Running the en-gNB &amp; connecting to near-RT RIC</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#srsenb-in-zeromq-mode">srsENB in ZeroMQ mode</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#srsue-in-zeromq-mode">srsUE in ZeroMQ mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exchanging-traffic">Exchanging Traffic</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ping">PING</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iperf3">iPerf3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#en-gnb-and-ue-in-usrp-mode">en-gNB and UE in USRP Mode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#en-gnb-in-uhd-usrp-x310-mode">en-gNB in UHD USRP (X310) Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-srsue">Running the srsUE</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-the-network">Testing the Network</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">PING</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">iPerf3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MultipleUEs.html">Multiples UEs ZMQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonrtric.html">O-RAN Non-Real Time RIC Installation Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">xApp Deployment:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example_xapp_deployment.html">KPIMON xApp Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xapp_deployment.html">xApp Deployment - General Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nexran1.html">Running the Nexran Xapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssxapp.html">Running the SS Xapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idxapp.html">Deploying the Intrusion Detection xApp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="undeploy_ric.html">UnDeploying RIC Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srsRAN_additional_features.html">srsRAN Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubectl_commands.html">Kubectl Commands - Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oaic_t.html">OAIC-T</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2024 OAIC Workshop</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="2024_workshop_gcp.html">Day 1 - Google Cloud Platform Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024_workshop_ss.html">Day 1 - Secure Slicing xApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xapp_python.html">Day 2 - Developing a custom xApp in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgeric-workshop-tutorial.html">Day 2 - EdgeRIC tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OAIC-2024-Workshop-oai-flexric-documentation.html">Day 2 - OAI/FlexRIC Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OAIC-T-fast-setup.html">Day 3 - OAIC-T</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OAIC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Setup your own 5G Network</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/setup5gnetwork.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="setup-your-own-5g-network">
+<span id="setup5gnet"></span><h1>Setup your own 5G Network<a class="headerlink" href="#setup-your-own-5g-network" title="Link to this heading"></a></h1>
+<p>In this example, the EPC and en-gNB (NSA mode) and near-RT RIC are assumed to run on the same machine/VM (Machine 1). The UE, if using USRPs should be run on a different machine/VM (Machine 2). But if zeroMQ mode is used, a single machine suffices for all components. Refer to GNU radio integration for instructions to include multiple simulated UEs.</p>
+<section id="running-the-epc">
+<h2>Running the EPC<a class="headerlink" href="#running-the-epc" title="Link to this heading"></a></h2>
+<p>Before we start the EPC, we need to create a separate network namespace for the UE since all components are running on the same machine.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ip netns add ue1
+sudo ip netns list
+</pre></div>
+</div>
+<p>Now, in a new command window on Machine 1 run srsRAN EPC:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo srsepc
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The EPC can be run on a different machine and the eNB can connect to it based on its IP address. This IP address has to be specified in the eNB config file.</p>
+</div>
+<p>Here we outline two options to bring up the en-gNB and the UE - one with  zeroMQ simulation and the other with USRP X310.</p>
+</section>
+<section id="en-gnb-and-ue-in-zeromq-mode">
+<h2>en-gNB and UE in ZeroMQ Mode<a class="headerlink" href="#en-gnb-and-ue-in-zeromq-mode" title="Link to this heading"></a></h2>
+<p>Before we proceed further it would be worthwhile to open the logs of <code class="docutils literal notranslate"><span class="pre">E2</span> <span class="pre">Manager,</span> <span class="pre">E2</span> <span class="pre">Termination,</span> <span class="pre">Subscription</span> <span class="pre">Manager</span> <span class="pre">and</span> <span class="pre">Application</span> <span class="pre">Manager</span></code> to trace the flow of messages. The instructions to do this can be found in <a class="reference internal" href="kubectl_commands.html#kubectl-commands"><span class="std std-ref">Kubectl Commands</span></a> section.</p>
+<section id="running-the-en-gnb-connecting-to-near-rt-ric">
+<h3>Running the en-gNB &amp; connecting to near-RT RIC<a class="headerlink" href="#running-the-en-gnb-connecting-to-near-rt-ric" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want an xApp to communicate with the RAN, make sure that the xApp is not already deployed on the near-RT RIC platform.</p>
+</div>
+<p>In a new command window on Machine 1 run srsRAN en-gNB.</p>
+<p>But before we start the en-gNB, we need to get the current machine’s IP address and the IP address of the E2 Termination service at the near-RT RIC.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>export E2NODE_IP=<span class="nv">`hostname  -I | cut -f1 -d&#39; &#39;`</span>
+export E2NODE_PORT=5006
+export E2TERM_IP=<span class="nv">`sudo kubectl get svc -n ricplt --field-selector metadata.name=service-ricplt-e2term-sctp-alpha -o jsonpath=&#39;{.items[0].spec.clusterIP}&#39;`</span>
+</pre></div>
+</div>
+<section id="srsenb-in-zeromq-mode">
+<h4>srsENB in ZeroMQ mode<a class="headerlink" href="#srsenb-in-zeromq-mode" title="Link to this heading"></a></h4>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo srsenb --enb.n_prb=50 --enb.name=enb1 --enb.enb_id=0x19B \
+--rf.device_name=zmq --rf.device_args=&quot;fail_on_disconnect=true,tx_port0=tcp://<span class="ge">*:2000,rx_port0=tcp://localhost:2001,tx_port1=tcp://*</span>:2100,rx_port1=tcp://localhost:2101,id=enb,base_srate=23.04e6&quot; \
+--ric.agent.remote_ipv4_addr=${E2TERM_IP} --log.all_level=warn --ric.agent.log_level=debug --log.filename=stdout --ric.agent.local_ipv4_addr=${E2NODE_IP} --ric.agent.local_port=${E2NODE_PORT}
+</pre></div>
+</div>
+<p>Once the en-gNB is up and successfully connected to the near-RT RIC, you will see <strong>E2 Setup</strong> and <strong>E2 Response</strong> messages on the console. You will also see <code class="docutils literal notranslate"><span class="pre">RIC</span> <span class="pre">Connection</span> <span class="pre">Initialized</span></code> and <code class="docutils literal notranslate"><span class="pre">RIC</span> <span class="pre">state</span> <span class="pre">established</span></code> messages.</p>
+</section>
+</section>
+<section id="srsue-in-zeromq-mode">
+<h3>srsUE in ZeroMQ mode<a class="headerlink" href="#srsue-in-zeromq-mode" title="Link to this heading"></a></h3>
+<p>This command uses the default config file. The following message <code class="docutils literal notranslate"><span class="pre">RRC</span> <span class="pre">NR</span> <span class="pre">reconfiguration</span> <span class="pre">successful</span></code> confirms that the UE has connected to the NR cell. This will be used for the data link, while the LTE cell will be used for control messaging. On a new command terminal on the same machine run,</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo srsue --gw.netns=ue1
+</pre></div>
+</div>
+<p>Once the UE connects successfully to the network, the UE will be assigned an IP.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can find configuration files and database file related to ‘ue1’, ‘enb’, ‘epc’ in /home/.config/srsran directory. If you want to change the contents of the ‘ue.config’ and ‘user_db.csv’ files      such as IMSI and other values, make sure to first kill the EPC process, make modifications and then restart EPC. The EPC process updates this file when it exits.</p>
+</div>
+</section>
+<section id="exchanging-traffic">
+<h3>Exchanging Traffic<a class="headerlink" href="#exchanging-traffic" title="Link to this heading"></a></h3>
+<p>We outline testing the network through <code class="docutils literal notranslate"><span class="pre">ping</span></code> and <code class="docutils literal notranslate"><span class="pre">iperf</span></code>.</p>
+<section id="ping">
+<h4>PING<a class="headerlink" href="#ping" title="Link to this heading"></a></h4>
+<p>This is the simplest way to test the network. This will test whether or not the UE and core can successfully communicate.</p>
+<section id="uplink">
+<h5>Uplink<a class="headerlink" href="#uplink" title="Link to this heading"></a></h5>
+<p>When using zeroMQ, the ping command should be executed on a new terminal from the UE’s network space</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ip netns exec ue1 ping 172.16.0.1
+</pre></div>
+</div>
+</section>
+<section id="downlink">
+<h5>Downlink<a class="headerlink" href="#downlink" title="Link to this heading"></a></h5>
+<p>For Downlink, on a new terminal run</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ping &lt;ue_ip&gt;
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the IP address of the UE before issuing the ping command.</p>
+</div>
+</section>
+</section>
+<section id="iperf3">
+<h4>iPerf3<a class="headerlink" href="#iperf3" title="Link to this heading"></a></h4>
+<p>In this scenario, client will run on the UE side with the server on the network side (core). UDP traffic will be generated at 10Mbps for 60 seconds. It is important to start the server first, and then the client.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Both the client and server should be run on the same machine but on different terminal windows.</p>
+</div>
+<section id="network-side">
+<h5>Network Side<a class="headerlink" href="#network-side" title="Link to this heading"></a></h5>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>iperf3 -s -i 1
+</pre></div>
+</div>
+</section>
+<section id="ue-side">
+<h5>UE-Side<a class="headerlink" href="#ue-side" title="Link to this heading"></a></h5>
+<p>Again, since we are using zeroMQ, the iperf client should be run from the UE’s network namespace.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ip netns exec ue1 iperf3 -c 172.16.0.1 -b 10M -i 1 -t 60
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="en-gnb-and-ue-in-usrp-mode">
+<h2>en-gNB and UE in USRP Mode<a class="headerlink" href="#en-gnb-and-ue-in-usrp-mode" title="Link to this heading"></a></h2>
+<section id="en-gnb-in-uhd-usrp-x310-mode">
+<h3>en-gNB in UHD USRP (X310) Mode<a class="headerlink" href="#en-gnb-in-uhd-usrp-x310-mode" title="Link to this heading"></a></h3>
+<p>The srsENB should be run on the same machine as the EPC.</p>
+<p>In a new command window on Machine 1 run srsRAN en-gNB.</p>
+<p>Before we start the en-gNB, we need to get the current machine’s IP address and the IP address of the E2 Termination service at the near-RT RIC.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>export E2NODE_IP=<span class="nv">`hostname  -I | cut -f1 -d&#39; &#39;`</span>
+export E2NODE_PORT=5006
+export E2TERM_IP=<span class="nv">`sudo kubectl get svc -n ricplt --field-selector metadata.name=service-ricplt-e2term-sctp-alpha -o jsonpath=&#39;{.items[0].spec.clusterIP}&#39;`</span>
+</pre></div>
+</div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo srsenb --enb.name=enb1 --enb.enb_id=0x19B \
+--rf.device_name=uhd --rf.device_args=&quot;type=x300,clock=internal,sampling_rate=11.52e6,lo_freq_offset_hz=23.04e6,send_frame_size=8000,recv_frame_size=8000,num_send_frames=64,num_recv_frames=64,None&quot; \
+--ric.agent.remote_ipv4_addr=${E2TERM_IP} --log.all_level=warn --ric.agent.log_level=debug --log.filename=stdout --ric.agent.local_ipv4_addr=${E2NODE_IP} --ric.agent.local_port=${E2NODE_PORT}
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the near-RT RIC is hosted on a separate machine, we can input the IP address of the machine as the E2 Termination’s IP. The IP address of the machine can be found by running <code class="docutils literal notranslate"><span class="pre">ifconfig</span></code></p>
+</div>
+</section>
+<section id="running-the-srsue">
+<h3>Running the srsUE<a class="headerlink" href="#running-the-srsue" title="Link to this heading"></a></h3>
+<p>For this mode, the UE should run on Machine 2 (can be a VM).</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo srsue --rf.device_name=uhd --rf.device_args=&quot;type=x300,clock=internal,sampling_rate=11.52e6,lo_freq_offset_hz=23.04e6,send_frame_size=8000,recv_frame_size=8000,num_send_frames=64,num_recv_frames=64,None&quot; \
+--rf.srate=11.52e6 --rrc.release=15 --rat.nr.bands=3 --rat.nr.nof_carriers=1
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If youhave multiple USRPs with different IP addresses connected to a single machine, and you want to indicate particular USRPs to be used, you can do so by adding <code class="docutils literal notranslate"><span class="pre">addr=&lt;ip_aadress_of_usrp&gt;</span></code> to the <code class="docutils literal notranslate"><span class="pre">rf.device_args</span></code> argument.</p>
+</div>
+</section>
+<section id="testing-the-network">
+<h3>Testing the Network<a class="headerlink" href="#testing-the-network" title="Link to this heading"></a></h3>
+<p>We outline testing the network through <code class="docutils literal notranslate"><span class="pre">ping</span></code> and <code class="docutils literal notranslate"><span class="pre">iperf</span></code>.</p>
+<section id="id1">
+<h4>PING<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>This is the simplest way to test the network. This will test whether or not the UE and core can successfully communicate.</p>
+<section id="id2">
+<h5>Uplink<a class="headerlink" href="#id2" title="Link to this heading"></a></h5>
+<p>When using SDRs, we can directly run ping from a new terminal on the UE machine.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ping 172.16.0.1
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h5>Downlink<a class="headerlink" href="#id3" title="Link to this heading"></a></h5>
+<p>For Downlink, on the machine running EPC, run the following command on a new terminal.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo ping &lt;ue_ip_addr&gt;
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the IP address of the UE before issuing the ping command.</p>
+</div>
+</section>
+</section>
+<section id="id4">
+<h4>iPerf3<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
+<p>In this scenario, client will run on the UE side with the server on the network side (core). UDP traffic will be generated at 10Mbps for 60 seconds. It is important to start the server first, and then the client.</p>
+<section id="id5">
+<h5>Network Side<a class="headerlink" href="#id5" title="Link to this heading"></a></h5>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo iperf3 -s -i 1
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h5>UE-Side<a class="headerlink" href="#id6" title="Link to this heading"></a></h5>
+<p>If using SDRs, the iperf client can be run on the UE machine using on a new terminal,</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>sudo iperf3 -c 172.16.0.1 -b 10M -i 1 -t 60
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="srsRAN_installation.html" class="btn btn-neutral float-left" title="srsRAN with E2 Agent Installation Guide" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="MultipleUEs.html" class="btn btn-neutral float-right" title="Multiples UEs ZMQ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, OAIC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

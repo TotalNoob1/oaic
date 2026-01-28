@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting started: Developing xapps &mdash; OAIC 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=2709fde1"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OAIC
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oaic_features.html">OAIC Features</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Background Information:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="background_cloud.html">Background on Docker, Kubernetes &amp; Helm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background_oran_architecture.html">O-RAN Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background_srsRAN.html">RAN Architecture</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation Procedures:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="requirements.html">Hardware and Software Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oran_installation.html">O-RAN Near-Real Time RIC Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srsRAN_installation.html">srsRAN with E2 Agent Installation Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="setup5gnetwork.html">Setup your own 5G Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MultipleUEs.html">Multiples UEs ZMQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nonrtric.html">O-RAN Non-Real Time RIC Installation Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">xApp Deployment:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="example_xapp_deployment.html">KPIMON xApp Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xapp_deployment.html">xApp Deployment - General Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nexran1.html">Running the Nexran Xapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssxapp.html">Running the SS Xapp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="idxapp.html">Deploying the Intrusion Detection xApp</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Additional Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="undeploy_ric.html">UnDeploying RIC Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srsRAN_additional_features.html">srsRAN Additional Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kubectl_commands.html">Kubectl Commands - Cheat Sheet</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oaic_t.html">OAIC-T</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">2024 OAIC Workshop</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="2024_workshop_gcp.html">Day 1 - Google Cloud Platform Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2024_workshop_ss.html">Day 1 - Secure Slicing xApp</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xapp_python.html">Day 2 - Developing a custom xApp in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edgeric-workshop-tutorial.html">Day 2 - EdgeRIC tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OAIC-2024-Workshop-oai-flexric-documentation.html">Day 2 - OAI/FlexRIC Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OAIC-T-fast-setup.html">Day 3 - OAIC-T</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OAIC</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Getting started: Developing xapps</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/xapp_example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started-developing-xapps">
+<h1>Getting started: Developing xapps<a class="headerlink" href="#getting-started-developing-xapps" title="Link to this heading"></a></h1>
+<p>This document describes how to write an xApp and how to deploy it on the RIC platform.</p>
+<p>For a full reference, it is recommended to use the xApps Writers Guide:
+<a class="reference external" href="https://wiki.o-ran-sc.org/download/attachments/17269011/xApp_Writer_s_Guide_v2.pdf?version=4&amp;modificationDate=1625642899082&amp;api=v2">https://wiki.o-ran-sc.org/download/attachments/17269011/xApp_Writer_s_Guide_v2.pdf?version=4&amp;modificationDate=1625642899082&amp;api=v2</a></p>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>The RIC platform currently provides frameworks that make it easier to construct xApps in several languages. We will use the go xapp framework, but other languages do not differ much.</p>
+<p>xApp framework is a simple skeleton designed for rapid development of RIC xapps based on Go. Following figure depicts the high level architecture of xApp-framework, which consists of several loosely linked components that provide the common functions needed by the xApp developers. For GO-based xApps, application developers do not need to write xApp code from the scratch, but can use xApp-framework, which is designed to facilitate and rapidly build a full-fledged RIC xApps. The xApp-framework can be found [xapp-frame] and a simple example-Xapp that illustrates how the framework can be used is located at [example] The dependencies and prerequisites of xApp development are also described in the above links.</p>
+</section>
+<section id="the-xapp-frame-common-functions-and-interfaces">
+<h2>The Xapp Frame common functions and interfaces<a class="headerlink" href="#the-xapp-frame-common-functions-and-interfaces" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RESTful (new resources can be injected dynamically)</p></li>
+<li><p>RMR (with message filtering based on application rules)</p></li>
+<li><p>Database backend services (with configurable namespaces, etc)</p></li>
+<li><p>Watching and populating config-map changes in K8S environment</p></li>
+<li><p>Logging (via MDCLOG + tracing support in the future)</p></li>
+<li><p>ASN.1 decoding and encoding.</p></li>
+</ul>
+</section>
+<section id="the-go-xapp-framework-supports-various-essential-components">
+<h2>The GO xApp Framework supports various essential components<a class="headerlink" href="#the-go-xapp-framework-supports-various-essential-components" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RESTful: HTTP services, health probes and injecting new resources can be dynamically</p></li>
+<li><p>RMR client: Sending and receiving of RMR messages with message filtering based on application rules).</p></li>
+<li><p>DB client: Database backend services (with configurable namespaces etc) for SDL, RNIB and UENIB.</p></li>
+<li><p>Config: Reading, watching and populating config-map changes in K8S environment on runtime</p></li>
+<li><p>Logging and tracing: Generic system logging and tracing services (in the future).</p></li>
+<li><p>Metrics and statistics: Generating and publishing metrics to the met- rics server (Prometheus interface used to collect (or “scrap”) metrics and counters.</p></li>
+<li><p>ASN.1 decoding and encoding.</p></li>
+</ul>
+<p>For more information on the go-xapp-frame: <a class="reference external" href="https://gerrit.o-ran-sc.org/r/admin/repos/ric-plt/xapp-frame">https://gerrit.o-ran-sc.org/r/admin/repos/ric-plt/xapp-frame</a></p>
+<section id="hello-world-xapp-code-and-deployment">
+<h3>Hello world xAPP code and deployment<a class="headerlink" href="#hello-world-xapp-code-and-deployment" title="Link to this heading"></a></h3>
+<p>For demonstration purposes the hello world xapp written in go will be used.</p>
+<p>To get started clone the code:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/o-ran-sc/ric-app-hw-go.git
+</pre></div>
+</div>
+<p>This xAPP aims to provide basic implementation of :</p>
+<ol class="arabic simple">
+<li><p>A1 interfaces interactions</p></li>
+<li><p>Read-write operations into a persistent storage.</p></li>
+<li><p>xAPP Configuration management</p></li>
+<li><p>RMR Health Check</p></li>
+<li><p>xAPP SDL Check</p></li>
+<li><p>Raising alarms</p></li>
+<li><p>Generating metrics</p></li>
+<li><p>E2 Interface intereactions</p></li>
+</ol>
+<p>The methods in the source code show these functionalities.</p>
+<p>hwApp.go source code:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>package main
+
+import (
+        &quot;gerrit.o-ran-sc.org/r/ric-plt/xapp-frame/pkg/xapp&quot;
+)
+
+type HWApp struct {
+}
+
+var (
+        A1_POLICY_QUERY      = 20013
+        POLICY_QUERY_PAYLOAD = &quot;{\&quot;policy_type_id\&quot;:20000}&quot;
+)
+
+func (e *HWApp) sendPolicyQuery() {
+        xapp.Logger.Info(&quot;Invoked method to send  policy query message&quot;)
+
+        // prepare and send policy query message over RMR
+        rmrParams := new(xapp.RMRParams)
+        rmrParams.Mtype = A1_POLICY_QUERY // A1_POLICY_QUERY
+        rmrParams.Payload = []byte(POLICY_QUERY_PAYLOAD)
+
+        // send rmr message
+        flg := xapp.Rmr.SendMsg(rmrParams)
+
+        if flg {
+                xapp.Logger.Info(&quot;Successfully sent policy query message over RMR&quot;)
+        } else {
+                xapp.Logger.Info(&quot;Failed to send policy query message over RMR&quot;)
+        }
+}
+
+func (e *HWApp) ConfigChangeHandler(f string) {
+        xapp.Logger.Info(&quot;Config file changed&quot;)
+}
+
+func (e *HWApp) xAppStartCB(d interface{}) {
+        xapp.Logger.Info(&quot;xApp ready call back received&quot;)
+}
+
+func (e <span class="ge">*HWApp) Consume(msg *</span>xapp.RMRParams) (err error) {
+        id := xapp.Rmr.GetRicMessageName(msg.Mtype)
+
+        xapp.Logger.Info(&quot;Message received: name=%s meid=%s subId=%d txid=%s len=%d&quot;, id, msg.Meid.RanName, msg.SubId, msg.Xid, msg.PayloadLen)
+
+        switch id {
+        // policy request handler
+        case &quot;A1_POLICY_REQUEST&quot;:
+                xapp.Logger.Info(&quot;Recived policy instance list&quot;)
+
+        // health check request
+        case &quot;RIC_HEALTH_CHECK_REQ&quot;:
+                xapp.Logger.Info(&quot;Received health check request&quot;)
+
+        default:
+                xapp.Logger.Info(&quot;Unknown message type &#39;%d&#39;, discarding&quot;, msg.Mtype)
+        }
+
+        defer func() {
+                xapp.Rmr.Free(msg.Mbuf)
+                msg.Mbuf = nil
+        }()
+        return
+}
+
+func (e *HWApp) Run() {
+
+        // set MDC
+        xapp.Logger.SetMdc(&quot;HWApp&quot;, &quot;0.0.1&quot;)
+
+        // set config change listener
+        xapp.AddConfigChangeListener(e.ConfigChangeHandler)
+
+        // register callback after xapp ready
+        xapp.SetReadyCB(e.xAppStartCB, true)
+
+        // reading configuration from config file
+        waitForSdl := xapp.Config.GetBool(&quot;db.waitForSdl&quot;)
+
+        // start xapp
+        xapp.RunWithParams(e, waitForSdl)
+
+}
+
+func main() {
+        hw := HWApp{}
+        hw.Run()
+}
+</pre></div>
+</div>
+<p><em>The repository provides several optiuons for running the xAPP. The instructions are mirrored below from the github repository</em></p>
+<p>This xAPP can be run directly as a Linux binary, as a docker image, or in a pod in a Kubernetes environment. The first two can be used for dev testing. The last option is how an xAPP is deployed in the RAN Intelligent Controller environment. This covers all three methods.</p>
+<ol class="arabic simple">
+<li><p>Docker</p></li>
+<li><p>Linux Binary</p></li>
+<li><p>Kubernetes</p></li>
+</ol>
+</section>
+<section id="software-installation-and-deployment">
+<h3>Software Installation and Deployment<a class="headerlink" href="#software-installation-and-deployment" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="onboarding-of-hw-go-using-dms-cli-tool">
+<h2>Onboarding of hw-go using dms_cli tool<a class="headerlink" href="#onboarding-of-hw-go-using-dms-cli-tool" title="Link to this heading"></a></h2>
+<p>dms_cli offers rich set of command line utility to onboard hw-go xapp
+to chartmuseme.</p>
+<p>First checkout the [hw-go](<a class="reference external" href="https://gerrit.o-ran-sc.org/r/admin/repos/ric-app/hw-go">https://gerrit.o-ran-sc.org/r/admin/repos/ric-app/hw-go</a>) repository from gerrit.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>git clone &quot;https://gerrit.o-ran-sc.org/r/ric-app/hw-go&quot;
+</pre></div>
+</div>
+<p>hw-go has following folder structure</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>├── Dockerfile
+├── INFO.yaml
+├── LICENSES.txt
+├── README.md
+├── config
+│   ├── config-file.json           // descriptor for hw-go
+│   ├── schema.json                // schema for controls section of descriptor
+│   └── uta_rtg.rt                 // local route file
+├── docs
+├── go.mod
+├── go.sum
+└── hwApp.go
+</pre></div>
+</div>
+<p>For onboarding hw-go make sure that dms_cli and helm3 is installed.
+One can follow [documentation](<a class="reference external" href="https://docs.o-ran-sc.org/projects/o-ran-sc-it-dep/en/latest/installation-guides.html#ric-applications">https://docs.o-ran-sc.org/projects/o-ran-sc-it-dep/en/latest/installation-guides.html#ric-applications</a>) to configure dms-cli.</p>
+<p>Once dms_cli is availabe we can proceed to onboarding proceure.</p>
+<p>configure the export CHART_REPO_URL to point chartmuseme.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ export CHART_REPO_URL=http://&lt;service-ricplt-xapp-onboarder-http.ricplt&gt;:8080
+</pre></div>
+</div>
+<p>check if dms_cli working fine.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>dms_cli health
+True
+</pre></div>
+</div>
+<p>Now move to config folder to initiate onboarding.</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ cd config
+$ dms_cli onboard --config_file_path=config-file.json --shcema_file_path=schema.json
+httpGet:
+path: &#39;{{ index .Values &quot;readinessProbe&quot; &quot;httpGet&quot; &quot;path&quot; | toJson }}&#39;
+port: &#39;{{ index .Values &quot;readinessProbe&quot; &quot;httpGet&quot; &quot;port&quot; | toJson }}&#39;
+initialDelaySeconds: &#39;{{ index .Values &quot;readinessProbe&quot; &quot;initialDelaySeconds&quot; | toJson }}&#39;
+periodSeconds: &#39;{{ index .Values &quot;readinessProbe&quot; &quot;periodSeconds&quot; | toJson }}&#39;
+
+httpGet:
+path: &#39;{{ index .Values &quot;livenessProbe&quot; &quot;httpGet&quot; &quot;path&quot; | toJson }}&#39;
+port: &#39;{{ index .Values &quot;livenessProbe&quot; &quot;httpGet&quot; &quot;port&quot; | toJson }}&#39;
+initialDelaySeconds: &#39;{{ index .Values &quot;livenessProbe&quot; &quot;initialDelaySeconds&quot; | toJson }}&#39;
+periodSeconds: &#39;{{ index .Values &quot;livenessProbe&quot; &quot;periodSeconds&quot; | toJson }}&#39;
+
+{
+ &quot;status&quot;: &quot;Created&quot;
+}
+</pre></div>
+</div>
+<p>Check if hw-go is onborded</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ curl --location --request GET &quot;http://&lt;appmgr&gt;:32080/onboard/api/v1/charts&quot;  --header &#39;Content-Type: application/json&#39;
+
+{
+ &quot;hw-go&quot;: [
+     {
+         &quot;name&quot;: &quot;hw-go&quot;,
+         &quot;version&quot;: &quot;1.0.0&quot;,
+         &quot;description&quot;: &quot;Standard xApp Helm Chart&quot;,
+         &quot;apiVersion&quot;: &quot;v1&quot;,
+         &quot;appVersion&quot;: &quot;1.0&quot;,
+         &quot;urls&quot;: [
+             &quot;charts/hw-go-1.0.0.tgz&quot;
+         ],
+         &quot;created&quot;: &quot;2021-06-24T18:57:41.98056196Z&quot;,
+         &quot;digest&quot;: &quot;14a484d9a394ed34eab66e5241ec33e73be8fa70a2107579d19d037f2adf57a0&quot;
+     }
+ ]
+}
+</pre></div>
+</div>
+<p>If we would wish to download the charts then we can perform following curl operation :</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>curl --location --request GET &quot;http://&lt;appmgr&gt;:32080/onboard/api/v1/charts/xapp/hw-go/ver/1.0.0&quot;  --header &#39;Content-Type: application/json&#39; --output hw-go.tgz
+</pre></div>
+</div>
+<p>Now the onboarding is done.</p>
+<p>Once charts are available we can deploy the the hw-go using following curl command :</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>$ curl --location --request POST &quot;http://&lt;appmgr&gt;:32080/appmgr/ric/v1/xapps&quot;  --header &#39;Content-Type: application/json&#39;  --data-raw &#39;{&quot;xappName&quot;: &quot;hw-go&quot;, &quot;helmVersion&quot;: &quot;1.0.0&quot;}&#39;
+{&quot;instances&quot;:null,&quot;name&quot;:&quot;hw-go&quot;,&quot;status&quot;:&quot;deployed&quot;,&quot;version&quot;:&quot;1.0&quot;}
+</pre></div>
+</div>
+<p>Deployment will be done in ricxapp ns :</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>kubectl get po -n ricxapp
+NAME                             READY   STATUS    RESTARTS   AGE
+ricxapp-hw-go-55ff7549df-kpj6k   1/1     Running   0          2m
+</pre></div>
+</div>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>kubectl get svc -n ricxapp
+NAME                         TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)             AGE
+aux-entry                    ClusterIP   IP1             &lt;none&gt;        80/TCP,443/TCP      73d
+service-ricxapp-hw-go-http   ClusterIP   IP2             &lt;none&gt;        8080/TCP            103m
+service-ricxapp-hw-go-rmr    ClusterIP   IP3             &lt;none&gt;        4560/TCP,4561/TCP   103m
+</pre></div>
+</div>
+<p>Now we can query to appmgr to get list of all the deployed xapps :</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>curl http://service-ricplt-appmgr-http.ricplt:8080/ric/v1/xapps | jq .
+% Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                             Dload  Upload   Total   Spent    Left  Speed
+100   347  100   347    0     0    578      0 --:--:-- --:--:-- --:--:--   579
+[
+{
+ &quot;instances&quot;: [
+   {
+     &quot;ip&quot;: &quot;service-ricxapp-hw-go-rmr.ricxapp&quot;,
+     &quot;name&quot;: &quot;hw-go-55ff7549df-kpj6k&quot;,
+        &quot;policies&quot;: [
+          1
+        ],
+        &quot;port&quot;: 4560,
+        &quot;rxMessages&quot;: [
+        &quot;RIC_SUB_RESP&quot;,
+        &quot;A1_POLICY_REQ&quot;,
+        &quot;RIC_HEALTH_CHECK_REQ&quot;
+        ],
+        &quot;status&quot;: &quot;running&quot;,
+        &quot;txMessages&quot;: [
+        &quot;RIC_SUB_REQ&quot;,
+        &quot;A1_POLICY_RESP&quot;,
+        &quot;A1_POLICY_QUERY&quot;,
+        &quot;RIC_HEALTH_CHECK_RESP&quot;
+     ]
+    }
+    ]   ,
+    &quot;name&quot;: &quot;hw-go&quot;,
+    &quot;status&quot;: &quot;deployed&quot;,
+    &quot;version&quot;: &quot;1.0&quot;
+}
+]
+</pre></div>
+</div>
+<p>To view logs from hw-go:</p>
+<div class="highlight-rst notranslate"><div class="highlight"><pre><span></span>kubectl logs ricxapp-hw-go-55ff7549df-kpj6k -n ricxapp
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, OAIC.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
