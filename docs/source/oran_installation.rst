@@ -42,19 +42,19 @@ Step 1A: Configuring Windows Subsystem for Linux (WSL)
 
 Open command prompt as administrator and run the following command to install Ubuntu 20.04
 
-.. code-block:: bash
+.. code-block:: 
 
    wsl --install -d Ubuntu-20.04 
 
 Set up your username and password. Then set the following settings in wsl.conf using the following command.
 
-.. code-block:: bash
+.. code-block:: 
 
    sudo nano /etc/wsl.conf  
 
 Paste the following into the file, save, and exit.
    
-.. code-block:: rst
+.. code-block:: 
 
    [boot]
    systemd=true
@@ -69,7 +69,7 @@ Next, ensure that swap size is set to 0 in WSL settings as show below.
 
 Restart the machine and check that the following commands return similar ouputs. If they do, WSL has been setup properly 
 
-.. code-block:: bash
+.. code-block:: 
 
    sudo ls /sys/fs/cgroup/
    free -m
