@@ -11,7 +11,7 @@ Clone this repository and its submodules recursively:
 
     git clone https://github.com/openaicellular/oaic.git
     cd oaic
-    git submodule update --init --recursive 
+    git submodule update --init --recursive --remote
 
 ## Documentation
 
