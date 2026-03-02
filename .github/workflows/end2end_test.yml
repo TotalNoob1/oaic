@@ -48,7 +48,8 @@ jobs:
           sudo ./testingUbuntu22.sh
           sudo kubectl get pods -A
           sudo kubectl create ns ricinfra
-          sudo helm install stable/nfs-server-provisioner --namespace ricinfra --name nfs-release-1
+          sudo helm repo add nfs-ganesha-server-and-external-provisioner https://kubernetes-sigs.github.io/nfs-ganesha-server-and-external-provisioner/
+          sudo helm install nfs-release-1 nfs-ganesha-server-and-external-provisioner/nfs-server-provisioner -n ricinfra
           sudo kubectl patch storageclass nfs -p '{"metadata": {"annotations":{"storageclass.kubernetes.io/is-default-class":"true"}}}'
           # Step 3: Build Modified E2 docker Image (7 minutes)
           sudo docker run -d -p 5001:5000 --restart=always --name ric registry:2
@@ -56,8 +57,8 @@ jobs:
           sudo docker tag oaic/e2:5.5.0 localhost:5001/ric-plt-e2:5.5.0
           sudo docker push localhost:5001/ric-plt-e2:5.5.0
           # Step 4: Deploy the near-Real Time RIC (3 minutes)
-    #       cd ../../../bin I will need to make more changes here. Need to add python server
-    #       sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
+          cd ../../../bin I will need to make more changes here. Need to add python server
+          sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
     # - name: Install srsRAN with E2-Like Agent
     #   run: |
     #       # compile srsRAN-e2 with e2-like build flags (19 minutes without running tests)
