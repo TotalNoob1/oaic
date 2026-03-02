@@ -61,7 +61,7 @@ jobs:
           cd ../../../bin 
           sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
           
-          sleep 100
+
           sudo kubectl describe pods -n kube-flannel
           sudo kubectl describe pods -n kube-system
           sudo kubectl get pods -A
