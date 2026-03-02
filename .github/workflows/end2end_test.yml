@@ -11,8 +11,11 @@ on:
     - cron: '30 2 * * 0'
 
 jobs:
-  build:
-    runs-on: [Ubuntu-22.04, Ubuntu-24.04]
+  build-and-test:
+    strategy:
+      matrix:
+        os: [Ubuntu-22.04, Ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
     timeout-minutes: 90
     steps:
     - name: Checkout
