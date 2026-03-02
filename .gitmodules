@@ -1,7 +1,7 @@
 [submodule "RIC-Deployment"]
 	path = RIC-Deployment
-	url = https://github.com/openaicellular/RIC-Deployment.git
-	branch = stability-fixes
+	url = https://github.com/TotalNoob1/RIC-Deployment.git
+	branch = helm-changes
 [submodule "ric-plt-e2"]
 	path = ric-plt-e2
 	url = https://github.com/openaicellular/ric-plt-e2.git
