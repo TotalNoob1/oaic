@@ -56,10 +56,13 @@ jobs:
           sudo docker pull oaic/e2:5.5.0
           sudo docker tag oaic/e2:5.5.0 localhost:5001/ric-plt-e2:5.5.0
           sudo docker push localhost:5001/ric-plt-e2:5.5.0
-          sudo kubectl describe pods -n kube-flannel   
+          sudo kubectl describe pods -n kube-flannel
+          sudo kubectl describe pods -n kube-system
+          sudo ls /opt/cni/bin/
           # Step 4: Deploy the near-Real Time RIC (3 minutes)
           cd ../../../bin 
           sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
+          
           sleep 100
           sudo kubectl describe pods -n ricplt
           sudo kubectl describe pods -n kube-flannel
