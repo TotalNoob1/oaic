@@ -33,7 +33,7 @@ jobs:
           # Step 2: Install Kubernetes, Docker, and Helm (4 minutes)
           cd RIC-Deployment/tools/k8s/bin
           ./gen-cloud-init.sh
-          chmod +x "$testingUbuntu22.sh"
+          chmod +x "testingUbuntu22.sh"
           sudo apt remove containernetworking-plugins
           sudo ./testingUbuntu22.sh
           sudo kubectl get pods -A
