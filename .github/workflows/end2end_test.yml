@@ -120,8 +120,8 @@ jobs:
           timeout 5 sudo ip netns exec ue1 ping 172.16.0.1 -O -c 4 ; rc=$? 
           if [ $rc -ne 0 ] ; echo ">>> 5G Network setup failed with code $rc"; then exit 1 ; fi
           echo ">>> 5G Network setup completed"
-   - name: Deploy and test KPIMON Xapp
-     run: |
+    - name: Deploy and test KPIMON Xapp
+      run: |
           OAIC=`pwd`
           sudo systemctl start nginx.service
           cd /etc/nginx/sites-enabled
