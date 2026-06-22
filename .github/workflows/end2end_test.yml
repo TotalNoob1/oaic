@@ -27,7 +27,7 @@ jobs:
           sudo apt install nfs-common
           sudo apt-get install build-essential cmake libfftw3-dev libmbedtls-dev libboost-program-options-dev libconfig++-dev libsctp-dev libtool autoconf
           sudo apt-get install libzmq3-dev nginx
-          sudo apt install libtool autoconf gnuradio python3-pip iperf3 -y
+          sudo apt install libtool autoconf gnuradio python3-pip iperf3
     - name: Setting up Kubernetes, Docker, and Helm
       run: |
           # Step 2: Install Kubernetes, Docker, and Helm (4 minutes)
@@ -65,7 +65,7 @@ jobs:
       run: |
         cd RIC-Deployment/bin
         sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
-        sleep 10
+        sleep 30
         sudo kubectl get pods -A
     - name: Install asn1c Compiler
       run: |
@@ -79,6 +79,7 @@ jobs:
       run: |
           # compile srsRAN-e2 with e2-like build flags (19 minutes without running tests)
           cd srsRAN-e2
+          rm -rf build
           mkdir build
           export SRS=`realpath .`
           cd build
