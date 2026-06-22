@@ -65,8 +65,9 @@ jobs:
       run: |
         cd RIC-Deployment/bin
         sudo ./deploy-ric-platform -f ../RECIPE_EXAMPLE/PLATFORM/example_recipe_oran_e_release_modified_e2.yaml
-        sleep 30
+        sleep 300
         sudo kubectl get pods -A
+        sudo kubectl describe pods -A
     - name: Install asn1c Compiler
       run: |
           cd asn1c
